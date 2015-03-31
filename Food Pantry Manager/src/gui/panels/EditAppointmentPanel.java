@@ -66,7 +66,7 @@ public class EditAppointmentPanel extends JPanel implements IUpdateOnSearch {
 	{
 		// Set variables
 		this.fpm = fpm;
-		this.sp = new SearchPanel(this, spm);
+		this.sp = new SearchPanel(fpm, spm);
 		
 		// Add search panel to top of MainPanel
 		add(sp, BorderLayout.NORTH);
@@ -155,6 +155,14 @@ public class EditAppointmentPanel extends JPanel implements IUpdateOnSearch {
 	}
 	
 	public void updateForClient(Client c) {
+		// A necessary check to prevent extra work.
+		// Too many events fire because each tab tries to update every other tab on selecting a different client in the list.
+		// The root problem is that SearchPanel has three different instances - one on each of three different tabs.
+		// We cannot add the same SearchPanel object to each different tab - that doesn't work.
+		// This could perhaps be resolved by changing the GUI so that SearchPanel is separate, but then it would have to appear above every tab,
+		// eating up space in tabs that don't need the search panel.
+		if (activeClient == c) return;
+		
 		if(c == null) { // If no client is selected (there were no search matches)...
 			// Nullify active client
 			activeClient = null;
@@ -170,9 +178,9 @@ public class EditAppointmentPanel extends JPanel implements IUpdateOnSearch {
 			// Set as active client
 			activeClient = c;
 			
-			// Notify other tabs with SearchPanels what is selected
-			fpm.getMainPanel().getSp().setSelected(c);
-			fpm.getEditClientPanel().getSp().setSelected(c);
+			// Make sure client is selected in this panel's search panel
+			// The updates may be coming from selecting a client in another panel's search panel
+			sp.setSelected(c);
 			
 			// Enable elements
 			date.setEnabled(true);

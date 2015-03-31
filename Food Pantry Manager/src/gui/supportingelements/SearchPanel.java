@@ -3,6 +3,7 @@
 
 package gui.supportingelements;
 
+import gui.FoodPantryManager;
 import gui.listeners.entryFieldFocusListener;
 import gui.panels.IUpdateOnSearch;
 
@@ -36,7 +37,7 @@ import database.Queries;
  * @author Scott Hoelsema
  */
 public class SearchPanel extends JPanel {
-	private IUpdateOnSearch panel; // The panel that gets updated
+	private FoodPantryManager fpm; // The panel that gets updated
 	private SearchPanelModel spm;
 	private JPanel lookUpPanel; // Holds labels, text fields, and search button
 	private JTextField firstName;
@@ -46,10 +47,10 @@ public class SearchPanel extends JPanel {
 	private JScrollPane choiceList;
 	private JList<Client> selectClient; // Lists results of search
 	
-	public SearchPanel(IUpdateOnSearch panel, SearchPanelModel spm)
+	public SearchPanel(FoodPantryManager fpm, SearchPanelModel spm)
 	{		
 		// Create elements
-		this.panel = panel;
+		this.fpm = fpm;
 		this.spm = spm;
 		lookUpPanel = new JPanel(new GridLayout(3,3,10,10));
 		
@@ -195,23 +196,18 @@ public class SearchPanel extends JPanel {
 	 * Update the panels that display client information based on the active
 	 * client. This is abstracted because it is called from performSearch (if no
 	 * results) and selectClientListListener.
-	 * WARNING: You should probably not call this, otherwise lots of events will fire,
-	 * because each panel will try to update every other panel. Instead, use setSelected.
-	 * This will trigger a changed active client in the current tab which will then 
-	 * call this method which will update the tab this SearchPanel is tied to, which
-	 * will update other tabs with SearchPanels.
 	 * 
 	 * @param c
 	 *            The active client
 	 */
 	private void updatePanelWithActiveClient(Client c) {
-		panel.updateForClient(c);
+		fpm.updatePanelsOnSearchSelectionChange(c);
 	}
 	
 	/**
 	 * Set the given client as the selected one. Used so that tabs all have the
 	 * same client selected; this is a gateway from the outside to control which
-	 * client is selected
+	 * client is selected.
 	 * 
 	 * @param c
 	 *            The client to set selected
@@ -219,7 +215,7 @@ public class SearchPanel extends JPanel {
 	public void setSelected(Client c) {
 		if(c == null) {
 			selectClient.clearSelection();
-		} 
+		}
 		selectClient.setSelectedValue(c, true);
 	}
 	

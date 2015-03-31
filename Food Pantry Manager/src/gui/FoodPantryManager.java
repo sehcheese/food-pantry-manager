@@ -19,6 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 import javax.swing.ProgressMonitor;
 
+import database.Client;
 import database.DatabaseConnection;
 import database.Queries;
 import utils.Backup;
@@ -112,6 +113,12 @@ public class FoodPantryManager extends JFrame {
 		add(tabbedPane);
 	}
 	
+	public void updatePanelsOnSearchSelectionChange(Client c) {
+		mp.updateForClient(c);
+		eap.updateForClient(c);
+		ecp.updateForClient(c);
+	}
+	
 	public MainPanel getMainPanel() {
 		return mp;
 	}
@@ -126,10 +133,6 @@ public class FoodPantryManager extends JFrame {
 	
 	public EditClientPanel getEditClientPanel() {
 		return ecp;
-	}
-	
-	public NewClientPanel getNewClientPanel() {
-		return ncp;
 	}
 	
 	/**
