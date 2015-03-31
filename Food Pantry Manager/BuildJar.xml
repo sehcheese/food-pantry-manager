@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_runnable_jar" name="Create Runnable Jar for Project Food Pantry Manager">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_runnable_jar">
+        <jar destfile="/home/scott/Desktop/FPM.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="gui.FoodPantryManager"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="./bin"/>
+            
+            <fileset dir="./">
+                <exclude name="bin/"/>
+                <exclude name="lib/"/>
+                <exclude name="Backup/"/>
+                <exclude name="Errors/"/>
+                <exclude name="Old/"/>
+                <exclude name="BuildJar.xml"/>
+                <exclude name="configuration.cfg"/>
+                <exclude name=".settings/"/>
+                <exclude name=".project"/>
+                <exclude name=".classpath"/>
+            </fileset>
+            
+            <fileset dir="./lib">
+                <exclude name="mysql-connector-java-5.1.34-bin.jar"/>
+                <exclude name="jasypt-1.9.2.jar"/>
+                <exclude name="dropbox-core-sdk-1.7.7.jar"/>
+                <exclude name="jackson-core-2.2.4.jar"/>
+            </fileset>
+            
+            <zipfileset excludes="META-INF/*.SF" src="./lib/mysql-connector-java-5.1.34-bin.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="./lib/jasypt-1.9.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="./lib/dropbox-core-sdk-1.7.7.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="./lib/jackson-core-2.2.4.jar"/>
+            
+        </jar>
+    </target>
+</project>
+
+<!--  Copyright (C) 2015 Scott Hoelsema                  -->
+<!--  Licensed under GPL v3.0; see LICENSE for full text -->
