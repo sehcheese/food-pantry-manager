@@ -40,6 +40,12 @@ public class Updates {
 	 * UPDATES ON client TABLE *
 	\***************************/
 	
+	/**
+	 * Update a client's record in the database
+	 * 
+	 * @param c The client object with updated information - should have every field set, not just changed ones.
+	 * @return boolean indicating the success of the attempted update
+	 */
 	public static boolean updateClient(Client c) {
 		try {
 			if(conn != null && conn.isValid(CONNECTION_TIMEOUT_LENGTH)) {
@@ -108,6 +114,7 @@ public class Updates {
 	 * Fill in the rest of the information about an appointment scheduled earlier by Inserts.addNextAppointment
 	 * 
 	 * @param pickupAppt An Appointment object with (at least) appointmentID, date, and pounds set 
+	 * @return boolean indicating the success of attempting to do the database operations involved in doing a pickup
 	 */
 	public static boolean doPickup(Appointment pickupAppt) {
 		try {
@@ -200,6 +207,12 @@ public class Updates {
 	 * UPDATES ON household TABLE *
 	\******************************/
 	
+	/**
+	 * Delete a household member from the database
+	 * 
+	 * @param hm A Household object indicating the household member to delete (only needs id)
+	 * @return boolean indicating the success of attempting to delete the household member
+	 */
 	public static boolean deleteHouseholdMember(Household hm) {
 		try {
 			if(conn != null && conn.isValid(CONNECTION_TIMEOUT_LENGTH)) {

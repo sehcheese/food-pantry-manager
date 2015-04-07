@@ -25,8 +25,11 @@ public class DatabaseConnection {
 	/**
 	 * Log in to the database
 	 * 
-	 * @param username Database username
-	 * @param password Database password
+	 * @param username
+	 *            Database username
+	 * @param password
+	 *            Database password
+	 * @return boolean indicating the success of attempted log in
 	 */
 	public static boolean logIn(String username, String password) {
 		try {

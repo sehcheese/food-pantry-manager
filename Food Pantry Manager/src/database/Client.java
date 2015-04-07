@@ -40,6 +40,8 @@ public class Client {
 	 * 
 	 * @param rs
 	 *            The ResultSet with the cursor at the desired record
+	 * @throws SQLException
+	 *            Error in getting data from the provided ResultSet.
 	 */
 	public Client(ResultSet rs) throws SQLException
 	{

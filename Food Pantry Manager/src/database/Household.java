@@ -34,6 +34,8 @@ public class Household {
 	 * 
 	 * @param rs
 	 *            The ResultSet with the cursor at the desired record
+	 * @throws SQLException
+	 *            Error in getting data from the provided ResultSet.
 	 */
 	public Household(ResultSet rs) throws SQLException
 	{

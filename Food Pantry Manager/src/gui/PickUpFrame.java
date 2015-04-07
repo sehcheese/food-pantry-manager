@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import utils.Configuration;
 import utils.Utilities;
 import database.Appointment;
 import database.Client;
@@ -113,7 +114,7 @@ public class PickUpFrame extends JFrame {
 		
 		// Add elements to centerPanel - next appointment section
 		lowCenterPanel.add(nextApptLabel); // Add label
-		nextApptDatePanel.setAheadFromCurrent(4); // Pass in number of weeks to put appointment ahead by default
+		nextApptDatePanel.setAheadFromCurrent(Configuration.DEFAULT_WEEKS_TO_NEXT_APPOINTMENT); // Pass in number of weeks to put appointment ahead by default
 		lowCenterPanel.add(nextApptDatePanel); // Add DatePanel
 		nextApptTime.addFocusListener(new entryFieldFocusListener(nextApptTime));
 		nextApptTime.setToNearestHalfHour(); // Set to nearest half hour

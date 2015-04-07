@@ -60,7 +60,8 @@ public class EditAppointmentPanel extends JPanel implements IUpdateOnSearch {
 	/**
 	 * Build the GUI and listeners for the Edit Appointment panel
 	 * 
-	 * @param sp The search panel to put at the top
+	 * @param fpm The parent window - FoodPantryManager
+	 * @param spm The search panel model to add to the new SearchPanel
 	 */
 	public EditAppointmentPanel(FoodPantryManager fpm, SearchPanelModel spm)
 	{
@@ -154,6 +155,10 @@ public class EditAppointmentPanel extends JPanel implements IUpdateOnSearch {
 		public void windowOpened(WindowEvent arg0) {}		
 	}
 	
+	/**
+	 * Upon a new selection of a client from the list in one of the
+	 * SearchPanels, update the appropriate fields.
+	 */
 	public void updateForClient(Client c) {
 		// A necessary check to prevent extra work.
 		// Too many events fire because each tab tries to update every other tab on selecting a different client in the list.
@@ -216,10 +221,6 @@ public class EditAppointmentPanel extends JPanel implements IUpdateOnSearch {
 	 */
 	public void refresh() {
 		updateForClient(activeClient);
-	}
-	
-	public SearchPanel getSp() {
-		return sp;
 	}
 	
 	/**

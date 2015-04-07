@@ -328,10 +328,6 @@ public class EditClientPanel extends JPanel implements IUpdateOnSearch {
 		}
 	}
 	
-	public SearchPanel getSp() {
-		return sp;
-	}
-	
 	/**
 	 * Update a client based on the Update Client section on the left/west side
 	 * 

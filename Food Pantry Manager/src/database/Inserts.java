@@ -98,7 +98,10 @@ public class Inserts {
 	 * Add new appointment; this appointment will happen in the future so we
 	 * will not set pounds right now
 	 * 
-	 * @param appt Appointment object with (at least) a clientID and date set
+	 * @param appt
+	 *            Appointment object with (at least) a clientID and date set
+	 * @return boolean indicating the success of attempting to set the next
+	 *         appointment
 	 */
 	public static boolean addNextAppointment(Appointment appt) {
 		try {
@@ -124,6 +127,12 @@ public class Inserts {
 	 * INSERTS ON household TABLE *
 	\******************************/
 	
+	/**
+	 * Add a household member for a client to the table household
+	 * 
+	 * @param hm Household object with a clientID, name, gender, and relationship
+	 * @return boolean indicating the success of attempting to add a household member
+	 */
 	public static boolean addHouseholdMember(Household hm) {
 		try {
 			if(conn != null && conn.isValid(CONNECTION_TIMEOUT_LENGTH)) {

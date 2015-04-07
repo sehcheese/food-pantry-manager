@@ -308,6 +308,7 @@ public class NewClientPanel extends JPanel {
 	
 	public void updateCityList(String[] cities) {
 		cityList.setModel(new DefaultComboBoxModel<String>(cities));
+		cityList.getListeners(ItemListener.class)[0].itemStateChanged(null); // Fire event so that the Other City text field will become disabled, as it should. The model has been changed, but this has not been caught by the itemlistener for cityList.
 	}
 	
 	/**
@@ -317,7 +318,7 @@ public class NewClientPanel extends JPanel {
 	 */
 	private class cityListListener implements ItemListener {
 		public void itemStateChanged(ItemEvent e) {
-			if(cityList.getSelectedIndex() == cityList.getModel().getSize() - 1) {
+			if(cityList.getSelectedIndex() == cityList.getModel().getSize() - 1) { // Assumes "Other" is last option
 				otherLocation.setEnabled(true);
 			} else {
 				otherLocation.setEnabled(false);

@@ -160,6 +160,7 @@ public class Utilities {
 	 * Converts from military time to 12 hour time
 	 * 
 	 * @param time String of the time in format HH:MM
+	 * @return The time in 12 hour format
 	 */
 	public static String twelveHourClockFormat(String time) {
 		if(Integer.parseInt(time.substring(0,2)) < 13) { // Already correct; less than 1 o'clock

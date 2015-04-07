@@ -71,6 +71,11 @@ public class Queries {
 	 * QUERIES ON client TABLE *
 	\***************************/
 	
+	/**
+	 * Get all the clients in the database
+	 * 
+	 * @return an ArrayList of Client objects for each client in the database
+	 */
 	public static ArrayList<Client> getAllClients() {
 		try {
 			if(conn != null && conn.isValid(CONNECTION_TIMEOUT_LENGTH)) {
@@ -279,6 +284,11 @@ public class Queries {
 	 * QUERIES ON appointment TABLE *
 	\********************************/
 	
+	/**
+	 * Get all the appointments in the database
+	 * 
+	 * @return An ArrayList of Appointment objects for each appoitnment in the database
+	 */
 	public static ArrayList<Appointment> getAllAppointments() {
 		try {
 			if(conn != null && conn.isValid(CONNECTION_TIMEOUT_LENGTH)) {
@@ -550,6 +560,11 @@ public class Queries {
 	 * QUERIES ON household TABLE *
 	\******************************/
 	
+	/**
+	 * Get all the household members in the database
+	 * 
+	 * @return An ArrayList of Household objects for each household member in the database
+	 */
 	public static ArrayList<Household> getAllHouseholds() {
 		try {
 			if(conn != null && conn.isValid(CONNECTION_TIMEOUT_LENGTH)) {

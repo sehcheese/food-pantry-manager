@@ -30,11 +30,18 @@ public class Appointment {
 	}
 	
 	/**
-	 * Constructor called in Queries to make a Appointment object from an entry in
-	 * the appointment table; assumes SELECT *
+	 * Constructor called in Queries to make a Appointment object from an entry
+	 * in the appointment table; assumes SELECT *
 	 * 
 	 * @param rs
 	 *            The ResultSet with the cursor at the desired record
+	 * @param setClientName
+	 *            Indicates whether the constructor should attempt a set on the
+	 *            clientName field. This field is a convenience field for when
+	 *            the appointment table is joined with the client table, which
+	 *            is often done in order to get the client's name.
+	 * @throws SQLException
+	 *             Error in getting data from the provided ResultSet.
 	 */
 	public Appointment(ResultSet rs, boolean setClientName) throws SQLException
 	{
