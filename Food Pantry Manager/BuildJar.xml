@@ -27,6 +27,9 @@
                 <exclude name="Backup/"/>
                 <exclude name="Errors/"/>
                 <exclude name="Old/"/>
+                <exclude name="FPM.jar"/>
+                <exclude name="Backup/"/>
+                <exclude name="Errors/"/>
                 <exclude name="BuildJar.xml"/>
                 <exclude name="configuration.cfg"/>
                 <exclude name=".settings/"/>

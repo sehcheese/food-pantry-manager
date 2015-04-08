@@ -54,15 +54,15 @@ public class Configuration {
 	
 	// Set variables according to configurations file
 	public static final String APP_NAME = properties.getProperty("application.name");
-	public static final String APP_LOGO_PATH = properties.getProperty("application.logo_path").replace("\\","\\\\");
+	public static final String APP_LOGO_PATH = properties.getProperty("application.logo_path");
 	
 	public static final String DATABASE_IP_ADDRESS = properties.getProperty("database.ip_address");
 	public static final String DATABASE_PORT = properties.getProperty("database.port");
 	public static final String DATABASE_NAME = properties.getProperty("database.name");
 	
-	public static String errorLogDirectory = properties.getProperty("application.error_log_directory").replace("\\","\\\\");
+	public static String errorLogDirectory = properties.getProperty("application.error_log_directory");
 	public static boolean isLocalOrNetworkBackup = Boolean.valueOf(properties.getProperty("application.do_local_backup"));
-	public static String localOrNetworkBackupDirectory = properties.getProperty("application.local_backup_directory").replace("\\","\\\\");
+	public static String localOrNetworkBackupDirectory = properties.getProperty("application.local_backup_directory");
 	public static boolean isDropBoxBackup = Boolean.valueOf(properties.getProperty("application.do_dropbox_backup"));
 	public static String dropBoxApiKey = properties.getProperty("application.dropbox_api_key");
 	
